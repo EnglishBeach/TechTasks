@@ -35,6 +35,7 @@ matplotlib = "^3.9.1"
 opencv-python = "^4.10.0.84"
 pyqt6 = "^6.7.1"
 pyaspeller = "^2.0.0"
+pytesseract = "^0.3.10"
 
 
 [tool.poetry.group.dev.dependencies]
