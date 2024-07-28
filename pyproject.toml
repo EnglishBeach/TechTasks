@@ -43,6 +43,10 @@ noisereduce = "^3.0.2"
 vosk = "^0.3"
 numpy = "<2.0"
 pyaudio = "^0.2"
+pandas = "^2.2.2"
+plotly = "^5.23.0"
+nbformat = "^5.10.4"
+statsmodels = "^0.14.2"
 
 
 [tool.poetry.group.dev.dependencies]
