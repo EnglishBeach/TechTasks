@@ -33,20 +33,20 @@ package-mode = false
 [tool.poetry.dependencies]
 python = "^3.10"
 matplotlib = "^3.9.1"
-opencv-python = "^4.10.0.84"
-pyqt6 = "^6.7.1"
-pyaspeller = "^2.0.0"
-pytesseract = "^0.3.10"
+opencv-python = "^4.10"
+pyqt6 = "^6.7"
+pyaspeller = "^2.0"
+pytesseract = "^0.3"
 wave = "^0.0.2"
-librosa = "^0.10.2.post1"
+librosa = "^0.10"
 noisereduce = "^3.0.2"
-vosk = "^0.3.45"
+vosk = "^0.3"
 numpy = "<2.0"
-pyaudio = "^0.2.14"
+pyaudio = "^0.2"
 
 
 [tool.poetry.group.dev.dependencies]
-ipykernel = "^6.29.5"
+ipykernel = "^6.29"
 
 [build-system]
 requires = ["poetry-core"]
