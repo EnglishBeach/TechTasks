@@ -82,14 +82,16 @@ class Signal:
         :param wav_path: Path to .wav file
         :return: Signal object
         """
-        if audio_path.suffix != 'wav':
+        if audio_path.suffix != '.wav':
             with TemporaryDirectory() as temp_dir:
                 audio_path = convert_to_wav(audio_path, out_dir=Path(temp_dir))
 
                 wave, sample_rate = soundfile.read(audio_path.as_posix())
+        else:
+            wave, sample_rate = soundfile.read(audio_path.as_posix())
         return cls(wave=wave, sample_rate=sample_rate)
 
-    def save(self, dir_path: Path, file_name: str) -> Path:
+    def to_wav(self, dir_path: Path, file_name: str) -> Path:
         """
         Save wave in .wav format
 
@@ -97,11 +99,12 @@ class Signal:
         :param name: File name w/o suffix
         :return: File path
         """
+        dir_path.mkdir(parents=True, exist_ok=True)
         save_path = dir_path / Path(f'{file_name}.wav')
         soundfile.write(
             save_path.as_posix(),
-            self.wave,
-            self.sample_rate,
+            data=self.wave,
+            samplerate=self.sample_rate,
             format='wav',
             # subtype='PCM_24',
         )
@@ -249,7 +252,7 @@ class Recognizer:
         """Recognize signal to text"""
 
         with TemporaryDirectory() as temp_dir:
-            signal_path = signal.resample(target_sample_rate=self.model_sample_rate).save(
+            signal_path = signal.resample(target_sample_rate=self.model_sample_rate).to_wav(
                 Path(temp_dir), 'temp_wav'
             )
             text = ''
